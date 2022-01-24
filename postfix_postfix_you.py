@@ -19,7 +19,7 @@ priority = {'(': 0, '+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
 print("___________________________________")
 experetion = input("Enter infix expration: ")
 print("___________________________________")
-#expration داخل  X  به ازای هر 
+# expration داخل  X  به ازای هر
 for x in experetion:
     if(x == '('):
         operator.append(x)
@@ -48,7 +48,7 @@ print("the Postfix expration is =", end=' ')
 for ele in output:
     print(ele, end='')
 
-#__________________________________________________________________________________________
+# __________________________________________________________________________________________
 
 
 output = []
@@ -61,7 +61,7 @@ print("___________________________________")
 experation = input("Enter infix expration: ")
 print("___________________________________")
 
-for i in experation [::-1]:
+for i in experation[::-1]:
     if(i == ')'):
         operator.append(i)
     elif(i == '('):
@@ -70,8 +70,8 @@ for i in experation [::-1]:
             output.append(ele)
         operator.pop()
     elif(i == '^' or i == '*' or i == '/' or i == '+' or i == '-'):
-        if(len(operator) > 0 ):
-            while(priority2[operator[-1]]>priority2[i]):
+        if(len(operator) > 0):
+            while(priority2[operator[-1]] > priority2[i]):
                 ele = operator.pop()
                 output.append(ele)
                 if(len(operator) == 0):
@@ -87,4 +87,4 @@ if(len(operator) > 0):
 print("the infix expration is = ", experation)
 print("the Pretfix expration is =", end=' ')
 for ele in output[::-1]:
-    print(ele,end='')
+    print(ele, end='')
