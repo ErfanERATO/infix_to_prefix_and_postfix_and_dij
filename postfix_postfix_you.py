@@ -47,3 +47,44 @@ print("the infix expration is = ", experetion)
 print("the Postfix expration is =", end=' ')
 for ele in output:
     print(ele, end='')
+
+#__________________________________________________________________________________________
+
+
+output = []
+operator = []
+
+# اولویت بندی ها
+priority2 = {')': 0, '+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+
+print("___________________________________")
+experation = input("Enter infix expration: ")
+print("___________________________________")
+
+for i in experation [::-1]:
+    if(i == ')'):
+        operator.append(i)
+    elif(i == '('):
+        while(operator[-1] != ')'):
+            ele = operator.pop()
+            output.append(ele)
+        operator.pop()
+    elif(i == '^' or i == '*' or i == '/' or i == '+' or i == '-'):
+        if(len(operator) > 0 ):
+            while(priority2[operator[-1]]>priority2[i]):
+                ele = operator.pop()
+                output.append(ele)
+                if(len(operator) == 0):
+                    break
+        operator.append(i)
+    else:
+        output.append(i)
+if(len(operator) > 0):
+    while(len(operator) != 0):
+        ele = operator.pop()
+        output.append(ele)
+
+print("the infix expration is = ", experation)
+print("the Pretfix expration is =", end=' ')
+for ele in output[::-1]:
+    print(ele,end='')
