@@ -47,9 +47,17 @@ for node in graph:
 print("Initial path dictionary \n {}".format(path))
 print("Initial queue list \n {}".format(queue))
 
+# iبردار مسیر رو مشخص میکنیم که نشون میده اندازه مسیر طی شده از نقطه مبدا تا نقطه 
 distance = []
+
+#بردار وضعیت که نشون میده وضعیت یک راس رو که آیا این راس بررسی شده یا نه  
 status = []
 
+#ابتدا از یک گره مبدا شروع می کنیم و وضعیت آن را پایدار قرار می دهیم
+#بعد از آن گره هایی که با گره مبدا یال مستقیم دارند را بروز می کنیم و مقدار هزینه و گره قبلی آن ها را تغییر می دهیم
+#در مرحله بعد یکی از گره های که تا کنون بررسی نشده اند را انتخاب و آن را در حالت پایدار قرار می دهیم
+#سپس مجددا وضعیت گره های همسایه آن را بررسی می کنیم تا ببینیم ایا این گره می تواند .
+#در کوتاه تر شدن مسیر مبدا تا همسایه ها تاثیر گذار باشد یا خیر این روال تا پیدا شدن مسیر نهایی ادامه دارد
 while source_node != end_node:
     try:
         path[source_node] = 0
@@ -64,14 +72,14 @@ while source_node != end_node:
                 status.append(k)
                 s = k
 
-        #print("Visited now : {}".format(s))
+        print("Visited now : {}".format(s))
         source_node = s
-        #print("Changed source : {}".format(source_node))
+        print("Changed source : {}".format(source_node))
 
         if(source_node == end_node):
             print("You reached your station.")
-            final_visited = ' -> '.join([str(item) for item in status])
-            print("Path followed : {} -> {}".format(final_source, final_visited))
+            final_status = ' -> '.join([str(item) for item in status])
+            print("Path followed : {} -> {}".format(final_source, final_status))
             print("Cost : {}".format(sum(distance)))
 
     except KeyError:
