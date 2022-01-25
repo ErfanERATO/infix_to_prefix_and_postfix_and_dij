@@ -135,7 +135,7 @@ class infix_to_postfix:
 
     def seek(self):
         if self.isempty():
-            return false
+            return False
         else:
             return self.items[self.size]
 

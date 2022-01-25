@@ -2,7 +2,7 @@
 
 
 def create_graph():
-    # مشخص کردن مسیر های موجود
+    #دارد که به معنی وجود یال و وزن آن هست j و i ماتریس مجاورتی رو به وجود میاریم هر عنصر یک 
     dictionary = {'A': {'B': 2, 'C': 5},
                   'B': {'C': 8, 'D': 7},
                   'C': {'E': 4, 'D': 2},
@@ -18,12 +18,13 @@ graph = create_graph()
 
 print("The single source non negative weighted direct graph \n {} \n".format(graph))
 
+#از یک گره مبدا شروع میکنیم به پیمایش
 source_node = input(
     "Input the sourse node from below list \n {} - ".format(graph.keys()))
 while(source_node not in graph.keys()):
     source_node = input(
         "Input the sourse node from below list \n {} - ".format(graph.keys()))
-
+#مسیر نهایی رو هم مشخص میکنیم
 end_node = input(
     "Input the end node from below list \n {} - ".format(graph.keys()))
 while(end_node not in graph.keys()):
@@ -47,7 +48,7 @@ print("Initial path dictionary \n {}".format(path))
 print("Initial queue list \n {}".format(queue))
 
 distance = []
-visited = []
+status = []
 
 while source_node != end_node:
     try:
@@ -58,9 +59,9 @@ while source_node != end_node:
         s = None
 
         for k in graph[source_node]:
-            if(graph[source_node][k] == short and (k not in visited)):
+            if(graph[source_node][k] == short and (k not in status)):
                 distance.append(short)
-                visited.append(k)
+                status.append(k)
                 s = k
 
         #print("Visited now : {}".format(s))
@@ -69,7 +70,7 @@ while source_node != end_node:
 
         if(source_node == end_node):
             print("You reached your station.")
-            final_visited = ' -> '.join([str(item) for item in visited])
+            final_visited = ' -> '.join([str(item) for item in status])
             print("Path followed : {} -> {}".format(final_source, final_visited))
             print("Cost : {}".format(sum(distance)))
 
